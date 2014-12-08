@@ -1157,10 +1157,10 @@
 							oldSizeX = item.sizeX,
 							oldSizeY = item.sizeY,
 							hasCallback = gridster.resizable && gridster.resizable.resize;
-						item.row = gridster.pixelsToRows(elmY, false);
-						item.col = gridster.pixelsToColumns(elmX, false);
-						item.sizeX = gridster.pixelsToColumns(elmW, true);
-						item.sizeY = gridster.pixelsToRows(elmH, true);
+						item.row = gridster.pixelsToRows(elmY);
+						item.col = gridster.pixelsToColumns(elmX);
+						item.sizeX = gridster.pixelsToColumns(elmW);
+						item.sizeY = gridster.pixelsToRows(elmH);
 
 						if (
 							hasCallback || item.row !== oldRow || item.col !== oldCol || item.sizeX !== oldSizeX || item.sizeY !== oldSizeY
