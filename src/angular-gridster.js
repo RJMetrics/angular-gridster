@@ -442,6 +442,7 @@
 				return Math.round(pixels / this.curColWidth);
 			};
 
+			return this;
 		}
 	])
 
@@ -781,6 +782,8 @@
 				this.$element.css('width', this.calculateElementWidth() + 'px');
 			}
 		};
+
+		return this;
 	})
 
 	.factory('GridsterDraggable', ['$document', '$timeout', '$window',
