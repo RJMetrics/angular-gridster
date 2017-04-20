@@ -1014,14 +1014,6 @@
 			}
 		};
 
-		this.calculateElementHeight = function() {
-			return (this.sizeY * this.gridster.curRowHeight - this.gridster.margins[0]);
-		}
-
-		this.calculateElementWidth = function() {
-			return (this.sizeX * this.gridster.curColWidth - this.gridster.margins[1]);
-		}
-
 		/**
 		 * Sets an elements height
 		 */
@@ -1029,7 +1021,7 @@
 			if (this.gridster.isMobile && !this.gridster.saveGridItemCalculatedHeightInMobile) {
 				this.$element.css('height', '');
 			} else {
-				this.$element.css('height', this.calculateElementHeight() + 'px');
+				this.$element.css('height', (this.sizeY * this.gridster.curRowHeight - this.gridster.margins[0]) + 'px');
 			}
 		};
 
@@ -1040,7 +1032,7 @@
 			if (this.gridster.isMobile) {
 				this.$element.css('width', '');
 			} else {
-				this.$element.css('width', this.calculateElementWidth() + 'px');
+				this.$element.css('width', (this.sizeX * this.gridster.curColWidth - this.gridster.margins[1]) + 'px');
 			}
 		};
 
