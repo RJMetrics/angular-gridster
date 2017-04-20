@@ -1036,9 +1036,6 @@
 			}
 		};
 
-		return this;
-	})
-
 		/**
 		 * Gets an element's width
 		 */
@@ -1053,6 +1050,7 @@
 			return (this.sizeY * this.gridster.curRowHeight - this.gridster.margins[0]);
 		};
 
+		return this;
 	})
 
 	.factory('GridsterTouch', [function() {
