@@ -1510,7 +1510,8 @@
 				}
 
 				function mouseDown(e) {
-					if (inputTags.indexOf(e.target.nodeName.toLowerCase()) !== -1) {
+					if (inputTags.indexOf(e.target.nodeName.toLowerCase()) !== -1 ||
+						inputTags.indexOf(e.target.parentNode.nodeName.toLowerCase()) !== -1) {
 						return false;
 					}
 
