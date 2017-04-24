@@ -617,6 +617,8 @@
 
 				return Math.round(pixels / this.curColWidth);
 			};
+
+			return this;
 		}
 	])
 
@@ -1012,6 +1014,14 @@
 			}
 		};
 
+		this.calculateElementHeight = function() {
+			return (this.sizeY * this.gridster.curRowHeight - this.gridster.margins[0]);
+		}
+
+		this.calculateElementWidth = function() {
+			return (this.sizeX * this.gridster.curColWidth - this.gridster.margins[1]);
+		}
+
 		/**
 		 * Sets an elements height
 		 */
@@ -1019,7 +1029,7 @@
 			if (this.gridster.isMobile && !this.gridster.saveGridItemCalculatedHeightInMobile) {
 				this.$element.css('height', '');
 			} else {
-				this.$element.css('height', (this.sizeY * this.gridster.curRowHeight - this.gridster.margins[0]) + 'px');
+				this.$element.css('height', this.calculateElementHeight() + 'px');
 			}
 		};
 
@@ -1030,7 +1040,7 @@
 			if (this.gridster.isMobile) {
 				this.$element.css('width', '');
 			} else {
-				this.$element.css('width', (this.sizeX * this.gridster.curColWidth - this.gridster.margins[1]) + 'px');
+				this.$element.css('width', this.calculateElementWidth() + 'px');
 			}
 		};
 
@@ -1048,6 +1058,7 @@
 			return (this.sizeY * this.gridster.curRowHeight - this.gridster.margins[0]);
 		};
 
+		return this;
 	})
 
 	.factory('GridsterTouch', [function() {
@@ -1499,7 +1510,8 @@
 				}
 
 				function mouseDown(e) {
-					if (inputTags.indexOf(e.target.nodeName.toLowerCase()) !== -1) {
+					if (inputTags.indexOf(e.target.nodeName.toLowerCase()) !== -1 ||
+						inputTags.indexOf(e.target.parentNode.nodeName.toLowerCase()) !== -1) {
 						return false;
 					}
 
@@ -1744,25 +1756,25 @@
 					var col = item.col;
 					// only change column if grabbing left edge
 					if (['w', 'nw', 'sw'].indexOf(handleClass) !== -1) {
-						col = gridster.pixelsToColumns(elmX, false);
+						col = gridster.pixelsToColumns(elmX);
 					}
 
 					var row = item.row;
 					// only change row if grabbing top edge
 					if (['n', 'ne', 'nw'].indexOf(handleClass) !== -1) {
-						row = gridster.pixelsToRows(elmY, false);
+						row = gridster.pixelsToRows(elmY);
 					}
 
 					var sizeX = item.sizeX;
 					// only change row if grabbing left or right edge
 					if (['n', 's'].indexOf(handleClass) === -1) {
-						sizeX = gridster.pixelsToColumns(elmW, true);
+						sizeX = gridster.pixelsToColumns(elmW);
 					}
 
 					var sizeY = item.sizeY;
 					// only change row if grabbing top or bottom edge
 					if (['e', 'w'].indexOf(handleClass) === -1) {
-						sizeY = gridster.pixelsToRows(elmH, true);
+						sizeY = gridster.pixelsToRows(elmH);
 					}
 
 
@@ -1831,6 +1843,7 @@
 
 					originalWidth = item.sizeX;
 					originalHeight = item.sizeY;
+
 
 					resizeStart(e);
 
