@@ -42,5 +42,5 @@
 		"type": "git",
 		"url": "git@github.com:ManifestWebDesign/angular-gridster.git"
 	},
-	"main": "dist/angular-gridster.min.js"
+	"main": "src/angular-gridster.js"
 }
